@@ -1,5 +1,17 @@
-#Delphi import unit per OpenSSL DLL
-##How to get OpenSSL DDL version
+# Delphi import unit per OpenSSL DLL
+
+1.     How to get OpenSSL DDL version DLL
+1.     How to compute SHA1 digest
+1.     Generate a RSA keypair (coded in OpenSSLUtils)
+1.     S/MIME sign (coded in OpenSSLUtils)
+1.     How to extract a PKCS#7 envelop content (coded in OpenSSLUtils)
+1.     How to verify a PKCS#7 envelop (coded in OpenSSLUtils)
+1.     Loading a private key, ask for passphrase with callback
+1.     File encryption using a RSA private key
+1.     RSA+MD5 signature
+
+
+## How to get OpenSSL DDL version
 ```
 function GetVersion: string;
 var
@@ -15,7 +27,7 @@ end;
 Result is described in OPENSSL_VERSION_NUMBER(3) man page
 
 
-##How to compute SHA1 digest
+## How to compute SHA1 digest
 
 ```
 function SHA1(msg: string): string;
@@ -42,7 +54,7 @@ result := StrPas(@outbuf);
 end;
 ```
 
-##Generate a RSA keypair
+## Generate a RSA keypair
 ```
 procedure GenerateKeyPair;
 var
@@ -99,7 +111,7 @@ if PrivateKeyOut <> nil then BIO_free_all(PrivateKeyOut);
 if PublicKeyOut <> nil then BIO_free_all(PublicKeyOut);
 end;
 ```
-##S/MIME message signing Firma S/MIME di un messaggio
+## S/MIME message signing Firma S/MIME di un messaggio
 
 Richiede OpenSSLUtils.pas
 Require OpenSSLUtils.pas
@@ -158,7 +170,7 @@ fSignedMessage := StrPas(buff);
 FreeMem(buff);
 end;
 ```
-##How to extract a PKCS#7 envelop content
+## How to extract a PKCS#7 envelop content
 
 Require OpenSSLUtils.pas
 ```
@@ -261,7 +273,7 @@ end;
 ```
 
 
-##How to verify a PKCS#7 envelop
+## How to verify a PKCS#7 envelop
 
 Require OpenSSLUtils.pas
 ```
@@ -316,7 +328,7 @@ envelope.Free;
 end.
 ```
 
-##Ask for private key passphrase with callback
+## Ask for private key passphrase with callback
 
 Require libeay32.pas
 
@@ -450,7 +462,7 @@ end;
 end.
 ```
 
-##File encryption using a RSA private key
+## File encryption using a RSA private key
 
 Require libeay32.pas, v. >= 0.7
 
@@ -507,7 +519,7 @@ if rsa_out <> nil then
 end;
 ```
 
-##RSA+MD5 signature
+## RSA+MD5 signature
 
 A nice contribute by Dim (Russia)
 
